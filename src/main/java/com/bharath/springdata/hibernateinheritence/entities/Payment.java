@@ -9,11 +9,10 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@Builder
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn()
-public class Payment {
+@DiscriminatorColumn(name = "pmode", discriminatorType = DiscriminatorType.STRING)
+public abstract class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
