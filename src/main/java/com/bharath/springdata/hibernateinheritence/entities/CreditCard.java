@@ -3,6 +3,7 @@ package com.bharath.springdata.hibernateinheritence.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @AllArgsConstructor
@@ -12,7 +13,8 @@ import lombok.*;
 @ToString
 @Builder
 @Entity
-@DiscriminatorValue("cc")
+//@DiscriminatorValue("cc")
+@Table(name = "card")
 public class CreditCard extends Payment{
     private String cardnumber;
 }
