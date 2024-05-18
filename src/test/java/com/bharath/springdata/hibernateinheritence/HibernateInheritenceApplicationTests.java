@@ -3,6 +3,7 @@ package com.bharath.springdata.hibernateinheritence;
 import com.bharath.springdata.hibernateinheritence.entities.Check;
 import com.bharath.springdata.hibernateinheritence.entities.CreditCard;
 import com.bharath.springdata.hibernateinheritence.entities.Payment;
+import com.bharath.springdata.hibernateinheritence.repository.CreditCardRepository;
 import com.bharath.springdata.hibernateinheritence.repository.PaymentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ class HibernateInheritenceApplicationTests {
 
     @Autowired
     private PaymentRepository paymentRepository;
+
+    @Autowired
+    private CreditCardRepository creditCardRepository;
 
     @Test
     void contextLoads() {
@@ -34,6 +38,11 @@ class HibernateInheritenceApplicationTests {
         check.setAmount(1000);
         check.setChecknumber("1234567890");
         paymentRepository.save(check);
+    }
+
+    @Test
+    void testFindByCardNumber(){
+        creditCardRepository.findByCardnumberGreaterThan("1").ifPresent(System.out::println);
     }
 
 }
